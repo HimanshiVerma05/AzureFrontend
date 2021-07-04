@@ -26,14 +26,14 @@ jobs:
     - name: npm install, build
       run: |
         npm install
-        npm run build --if-present
+         npm run build --prod
+      working-directory: .
     
 
     - name: Run Azure webapp deploy action using publish profile credentials
       uses: azure/webapps-deploy@v2
       with:
         app-name: frontendwebapphv
-        slot-name: Production
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF2429B547344BCF91E7F07894CDB6F2 }}
-        package: .
+        package: ./dist/frontend
 
