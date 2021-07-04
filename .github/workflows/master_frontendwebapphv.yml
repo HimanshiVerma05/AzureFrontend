@@ -36,5 +36,5 @@ jobs:
         app-name: frontendwebapphv
         slot-name: Production
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF2429B547344BCF91E7F07894CDB6F2 }}
-        package: ./dist/frontend
+        package: ./dist/AzureFrontend
 
