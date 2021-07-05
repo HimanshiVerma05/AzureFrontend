@@ -30,15 +30,15 @@ export class AppComponent {
     this.uploadService.getItemName(this.itemid).subscribe(
       (res : Item) =>{
         this.item = res;
-        alert(res);
-        this.itemName=res.name;
+        alert('result returned - '+res);
+        //this.itemName=res.name;
       },
       (err : Error) =>{
         console.log("error error error "+err);
       }
       
     );
-    alert("Item name is -- "+this.itemName);
+    //alert("Item name is -- "+this.itemName);
   }
   change($event) {
     this.changeImage = true;
