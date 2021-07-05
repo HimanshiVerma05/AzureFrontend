@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpResponse, HttpEventType } from '@angular/common/http';
 import { UploadFileService } from './service/upload-file.service';
+import { Item } from './model/Item';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,15 +14,31 @@ export class AppComponent {
   progress: { percentage: number } = { percentage: 0 };
   selectedFile = null;
   changeImage = false;
+  itemid=1;
+  public item:Item;
+  public itemName:string;
   constructor(private uploadService: UploadFileService){}
-  downloadFile(){
-    const link = document.createElement('a');
+  getItemName(){
+    /*const link = document.createElement('a');
     link.setAttribute('target', '_blank');
     link.setAttribute('href', '_File_Saved_Path');
     link.setAttribute('download', 'file_name.pdf');
     document.body.appendChild(link);
     link.click();
-    link.remove();
+    link.remove(); */
+
+    this.uploadService.getItemName(this.itemid).subscribe(
+      (res : Item) =>{
+        this.item = res;
+        alert(res);
+        this.itemName=res.name;
+      },
+      (err : Error) =>{
+        console.log("error error error "+err);
+      }
+      
+    );
+    alert("Item name is -- "+this.itemName);
   }
   change($event) {
     this.changeImage = true;
